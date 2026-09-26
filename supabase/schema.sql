@@ -44,6 +44,16 @@ create table if not exists public.locations (
   move_date timestamptz not null default now()
 );
 
+create table if not exists public.asset_images (
+  id uuid primary key default gen_random_uuid(),
+  asset_no text not null references public.assets(asset_no) on update cascade on delete cascade,
+  file_url text not null,
+  file_type text not null,
+  created_at timestamptz not null default now()
+);
+
 create index if not exists idx_transactions_asset_no on public.transactions(asset_no);
 create index if not exists idx_files_transaction_id on public.files(transaction_id);
 create index if not exists idx_locations_asset_no on public.locations(asset_no);
+create index if not exists idx_asset_images_asset_no on public.asset_images(asset_no);
+
