@@ -98,6 +98,30 @@ export type Database = {
         };
         Relationships: [];
       };
+      asset_images: {
+        Row: {
+          id: string;
+          asset_no: string;
+          file_url: string;
+          file_type: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          asset_no: string;
+          file_url: string;
+          file_type: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          asset_no?: string;
+          file_url?: string;
+          file_type?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       locations: {
         Row: {
           id: string;
@@ -144,6 +168,9 @@ export type TransactionInsert = Database["public"]["Tables"]["transactions"]["In
 
 export type FileRow = Database["public"]["Tables"]["files"]["Row"];
 export type FileInsert = Database["public"]["Tables"]["files"]["Insert"];
+
+export type AssetImageRow = Database["public"]["Tables"]["asset_images"]["Row"];
+export type AssetImageInsert = Database["public"]["Tables"]["asset_images"]["Insert"];
 
 export type LocationRow = Database["public"]["Tables"]["locations"]["Row"];
 export type LocationInsert = Database["public"]["Tables"]["locations"]["Insert"];
